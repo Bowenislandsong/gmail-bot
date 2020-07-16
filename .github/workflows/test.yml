@@ -12,7 +12,7 @@ jobs:
       - name: Comment Failed Test On PR # triggers on test failure
         if: ${{ github.event_name == 'pull_request'}}
         env:
-          SUPER_SECRET: ${{ secrets.FLAKE_BOT_SEC }}
+          FLAKE_BOT_SEC: ${{ secrets.FLAKE_BOT_SEC }}
         run: |
           git clone --branch v0.1.0 https://github.com/operator-framework/flake-analyzer.git
           cd ./flake-analyzer
