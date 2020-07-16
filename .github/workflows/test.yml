@@ -8,8 +8,12 @@ jobs:
   run-e2e-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: echo e2e-test-output-${{github.event.pull_request.head.number}}
-      - run: echo $FLAKE_BOT_SEC
+      - name: Comment Failed Test On PR # triggers on test failure
+      if: ${{ ${{ github.event_name == 'pull_request'}}
+      run: |
+        git clone -b v0.1.0 https://github.com/operator-framework/flake-analyzer.git
+        cd ./flake-analyzer
+        make report-on-pr OWNER=operator-framework REPO=operator-lifecycle-manager TOKEN=$secrets.flake-bot-sec TEST_SUITE=e2e-test-output PR=1626
+
 
       
