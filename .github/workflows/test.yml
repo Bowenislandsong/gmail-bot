@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo e2e-test-output-${{github.event.pull_request.head.number}}
-      - run: echo $secrets.FLAKE_BOT_SEC
+      - run: echo $FLAKE_BOT_SEC
 
       
