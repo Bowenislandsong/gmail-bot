@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo e2e-test-output-${{(github.event.pull_request.head.number)}}-${{ github.run_id }}
+      - run: echo e2e-test-output-${{github.event.pull_request.head.number}}-${{GITHUB_REF}}
 
       
