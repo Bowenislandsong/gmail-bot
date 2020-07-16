@@ -12,9 +12,9 @@ jobs:
       - name: Comment Failed Test On PR # triggers on test failure
         if: ${{ github.event_name == 'pull_request'}}
         run: |
-          git clone -b v0.1.0 https://github.com/operator-framework/flake-analyzer.git
+          git clone --branch v0.1.0 https://github.com/operator-framework/flake-analyzer.git
           cd ./flake-analyzer
-          make report-on-pr OWNER=operator-framework REPO=operator-lifecycle-manager TOKEN=$secrets.flake-bot-sec TEST_SUITE=e2e-test-output PR=1626
+          make report-on-pr OWNER=operator-framework REPO=operator-lifecycle-manager TOKEN=$secrets.FLAKE_BOT_SEC TEST_SUITE=e2e-test-output PR=1626
 
 
       
